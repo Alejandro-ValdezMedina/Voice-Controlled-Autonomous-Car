@@ -2,7 +2,7 @@
 
 ## Project Summary
 
-Voice-controlled autonomous robot car built as part of UC Berkeley’s EECS 16B. The system integrates **analog signal conditioning, embedded firmware, system identification, closed-loop motor control, and lightweight machine-learning–based classification** on a resource-constrained microcontroller.
+Voice-controlled autonomous car built as part of UC Berkeley’s EECS 16B. The system integrates **analog signal conditioning, embedded firmware, system identification, closed-loop motor control, and lightweight machine-learning–based classification** on a resource-constrained microcontroller.
 
 Spoken commands are processed through an analog front-end, projected into a low-dimensional PCA space for on-device classification, and mapped to motion behaviors (drive straight, turn, distance). Motor motion is regulated using **encoder feedback and a closed-loop controller derived from a least-squares plant model**, enabling robust performance despite motor mismatch and noise.
 
