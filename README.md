@@ -134,3 +134,30 @@ The system was validated using:
 - PWM vs velocity plots with least-squares fits
 - Closed-loop convergence of wheel-distance error (δ)
 - PCA clustering visualizations showing command separability
+
+### System Identification & Modeling
+The per-wheel motor dynamics were identified using least-squares regression. Linear models were fit directly from encoder measurements, and an operating point was selected from the region where both motors exhibit overlapping velocity ranges.
+
+![PWM vs velocity with linear fit](PWM_velocity_least_squares.png)
+
+This model enables predictable control behavior and compensates for inherent motor mismatch.
+
+Model validity was confirmed by integrating velocity over time and comparing predicted distance against encoder measurements:
+
+![Distance vs time validation](Distnace_time_linear_fit.png)
+
+### Closed-Loop Control Performance
+A feedback controller was implemented to regulate the difference in wheel distance (δ) and ensure straight-line motion despite motor mismatch.
+
+![Closed-loop control with steady-state error correction](PWM_velocity_least_squares.png)
+
+The controller drives steady-state error to zero while maintaining stability under model mismatch.
+
+### Voice Command Classification
+Spoken commands were projected into a low-dimensional PCA space trained offline using SVD. Classification is performed on-device via nearest-centroid distance.
+
+![PCA clusters with centroids 2D](PCA_centroids_2D.png)
+![PCA clusters with centroids 3D](PCA_centroids_3D.png)
+
+Distinct clustering confirms separability of commands and enables reliable embedded inference with minimal memory and computation.
+
